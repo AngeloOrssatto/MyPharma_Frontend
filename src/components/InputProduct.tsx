@@ -4,8 +4,7 @@ import { Box } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import api from '../services/api'
-
+import { ProductsService } from '../services/products/ProductsService'
 interface IProduct {
     id: number;
     name: string;
@@ -27,17 +26,14 @@ const InputProduct: FC = (): ReactElement => {
     const onDescriptionChange = (e: any) => setDescription(e.target.value)
 
     const handleSubmit = () => {
-        createProduct()
-        navigate('/products', { replace: true } )
+        create()
+        
         handleReset()
     }
 
-    async function createProduct() {
-        const response = await api.post('/products', {
-            name,
-            price,
-            description
-        })
+    async function create() {
+        const response = await ProductsService.createProduct(name, price, description)
+        navigate('/products', { replace: true } )
     }
 
     const handleReset = () => {

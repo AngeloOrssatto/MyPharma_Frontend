@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import api from '../services/api'
+import { ProductsService } from '../services/products/ProductsService'
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 100 },
@@ -34,9 +34,17 @@ const ListProducts: FC = (): ReactElement => {
     }, []);
 
     async function loadProducts() {
-        const response = await api.get('/products')
+        const response = await ProductsService.getAllProducts()
         console.log(response)
-        setProducts(response.data)
+        setProducts(response)
+    }
+
+    async function handleDelete(id:number) {
+      const response = await ProductsService.deleteProduct(id)
+      console.log(response)
+      setProducts(oldProducts => [
+        ...oldProducts.filter(oldProduct => oldProduct.id !== id),
+      ]);
     }
 
     return (
@@ -56,7 +64,7 @@ const ListProducts: FC = (): ReactElement => {
             {products.map(product => (
               <TableRow key={product.id}>
                 <TableCell>
-                  <IconButton size="small" onClick={() => {}}>
+                  <IconButton size="small" onClick={() => {handleDelete(product.id)}}>
                     <DeleteIcon>delete</DeleteIcon>
                   </IconButton>
                   <IconButton size="small" onClick={() => {}}>
