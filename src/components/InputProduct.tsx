@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from "react";
+import React, { FC, ReactElement, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import { Box } from "@mui/material";
 import TextField from '@mui/material/TextField';
@@ -6,6 +6,14 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import api from '../services/api'
 
+interface IProduct {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 const InputProduct: FC = (): ReactElement => {
     const navigate = useNavigate()
@@ -30,7 +38,6 @@ const InputProduct: FC = (): ReactElement => {
             price,
             description
         })
-        console.log(response)
     }
 
     const handleReset = () => {
