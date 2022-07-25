@@ -4,7 +4,8 @@ import { Box } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { ProductsService } from '../services/products/ProductsService'
+import { ProductsService } from '../../services/products/ProductsService'
+
 interface IProduct {
     id: number;
     name: string;
@@ -33,7 +34,7 @@ const InputProduct: FC = (): ReactElement => {
 
     async function create() {
         const response = await ProductsService.createProduct(name, price, description)
-        navigate('/products', { replace: true } )
+        // navigate('/products', { replace: true } )
     }
 
     const handleReset = () => {
@@ -57,7 +58,7 @@ const InputProduct: FC = (): ReactElement => {
                 <TextField
                 required
                 id="outlined-required"
-                label="Name"
+                label="Produto"
                 value={name}
                 onChange={onNameChange}
                 />

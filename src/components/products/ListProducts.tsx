@@ -1,11 +1,12 @@
 import React, { ReactElement, FC, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
 import { DataGrid, GridCellEditCommitParams, GridColDef } from '@mui/x-data-grid';
 import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { ProductsService } from '../services/products/ProductsService'
+import { ProductsService } from '../../services/products/ProductsService'
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 100 },
@@ -26,6 +27,7 @@ interface IProduct {
 }
 
 const ListProducts: FC = (): ReactElement => {
+    const navigate = useNavigate()
 
     const [products, setProducts] = useState<IProduct[]>([]);
 
@@ -67,7 +69,7 @@ const ListProducts: FC = (): ReactElement => {
                   <IconButton size="small" onClick={() => {handleDelete(product.id)}}>
                     <DeleteIcon>delete</DeleteIcon>
                   </IconButton>
-                  <IconButton size="small" onClick={() => {}}>
+                  <IconButton size="small" onClick={() => {navigate(`/products/${product.id}`)}}>
                     <EditIcon>edit</EditIcon>
                   </IconButton>
                 </TableCell>

@@ -1,6 +1,6 @@
 // pages
 import Home from "./pages/Home";
-// import About from "./pages/About";
+import EditProduct from "./pages/EditProduct";
 import Products from "./pages/Products";
 
 // other
@@ -18,7 +18,7 @@ interface Route {
 export const routes: Array<Route> = [
     {
         key: 'home-route',
-        title: 'Home',
+        title: 'Inserir',
         path: '/',
         enabled: true,
         component: Home
@@ -32,9 +32,17 @@ export const routes: Array<Route> = [
     // },
     {
         key: 'products-route',
-        title: 'Products',
+        title: 'Listagem',
         path: '/products',
         enabled: true,
         component: Products
-    }
+    },
+    // {
+    //     key: 'products-route',
+    //     title: 'Edit Products',
+    //     path: '/products/:id',
+    //     enabled: true,
+    //     component: EditProduct
+    // }
+
 ]
