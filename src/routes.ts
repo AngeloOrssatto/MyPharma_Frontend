@@ -23,13 +23,6 @@ export const routes: Array<Route> = [
         enabled: true,
         component: Home
     },
-    // {
-    //     key: 'about-route',
-    //     title: 'About',
-    //     path: '/about',
-    //     enabled: true,
-    //     component: About
-    // },
     {
         key: 'products-route',
         title: 'Listagem',

@@ -1,7 +1,6 @@
 import React, {ReactElement, FC, useEffect, useState} from "react";
-import {Box, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import { useNavigate, useParams } from 'react-router-dom';
-import InputProduct from "../components/products/InputProduct";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -39,7 +38,7 @@ const EditProduct: FC<any> = (): ReactElement => {
     async function update() {
         const response = await ProductsService.updateProduct(Number(id), name, price, description)
         console.log(response)
-        // navigate('/products', { replace: true } )
+        
     }
 
     return (
@@ -50,10 +49,9 @@ const EditProduct: FC<any> = (): ReactElement => {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            {/* <Typography variant="h3">EditProduct</Typography> */}
-            {/* <InputProduct></InputProduct> */}
             
-            <div>
+            <Stack direction="row" spacing={2}>
+
                 <TextField
                 required
                 id="outlined-required"
@@ -77,15 +75,16 @@ const EditProduct: FC<any> = (): ReactElement => {
                 onChange={onDescriptionChange}
                 />
             
-            </div>
-            <Button 
-                variant="contained" 
-                size="large" 
-                color="success"
-                onClick={handleSubmit}    
-            >
-                Atualizar
-            </Button>
+            
+                <Button 
+                    variant="contained" 
+                    size="large" 
+                    color="success"
+                    onClick={handleSubmit}    
+                    >
+                    Atualizar
+                </Button>
+            </Stack>
             
         </Box>
     );
