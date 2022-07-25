@@ -73,7 +73,32 @@ const Navbar: FC = (): ReactElement => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {routes.map((page) => (
+              <Link
+                key='products-insert-route'
+                component={NavLink}
+                to='/'
+                color="black"
+                underline="none"
+                variant="button"
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Inserir</Typography>
+                </MenuItem>
+              </Link>
+              <Link
+                key='products-route'
+                component={NavLink}
+                to='/products'
+                color="black"
+                underline="none"
+                variant="button"
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Listagem</Typography>
+                </MenuItem>
+              </Link>
+
+              {/* {routes.map((page) => (
                 <Link
                   key={page.key}
                   component={NavLink}
@@ -86,7 +111,7 @@ const Navbar: FC = (): ReactElement => {
                     <Typography textAlign="center">{page.title}</Typography>
                   </MenuItem>
                 </Link>
-              ))}
+              ))} */}
             </Menu>
           </Box>
           <Typography
@@ -107,7 +132,31 @@ const Navbar: FC = (): ReactElement => {
                 marginLeft: "1rem",
               }}
             >
-              {routes.map((page) => (
+              <Link
+                key='products-insert-route'
+                component={NavLink}
+                to='/'
+                color="black"
+                underline="none"
+                variant="button"
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Inserir</Typography>
+                </MenuItem>
+              </Link>
+              <Link
+                key='products-route'
+                component={NavLink}
+                to='/products'
+                color="black"
+                underline="none"
+                variant="button"
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Listagem</Typography>
+                </MenuItem>
+              </Link>
+              {/* {routes.map((page) => (
                 <Link
                   key={page.key}
                   component={NavLink}
@@ -119,7 +168,7 @@ const Navbar: FC = (): ReactElement => {
                 >
                   {page.title}
                 </Link>
-              ))}
+              ))} */}
             </Box>
           </Box>
         </Toolbar>

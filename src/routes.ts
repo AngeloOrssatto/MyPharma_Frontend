@@ -17,7 +17,7 @@ interface Route {
 
 export const routes: Array<Route> = [
     {
-        key: 'home-route',
+        key: 'products-insert-route',
         title: 'Inserir',
         path: '/',
         enabled: true,
@@ -37,12 +37,12 @@ export const routes: Array<Route> = [
         enabled: true,
         component: Products
     },
-    // {
-    //     key: 'products-route',
-    //     title: 'Edit Products',
-    //     path: '/products/:id',
-    //     enabled: true,
-    //     component: EditProduct
-    // }
+    {
+        key: 'products-edit-route',
+        title: 'Edit Products',
+        path: '/products/:id',
+        enabled: true,
+        component: EditProduct
+    }
 
 ]

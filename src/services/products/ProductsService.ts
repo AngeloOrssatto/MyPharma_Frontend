@@ -9,6 +9,15 @@ async function getAllProducts() {
     }
 }
 
+async function getProductById(id: number) {
+    try {
+        const response = await api.get(`/products/${id}`)
+        return response.data
+    } catch (error) {
+        return new Error('Erro ao carregar dados')
+    }
+}
+
 async function createProduct(name:string, price:number, description:string) {
     try {
         const response = await api.post('/products', {
@@ -33,7 +42,7 @@ async function deleteProduct(id:number) {
 
 async function updateProduct(id:number, name:string, price:number, description:string) {
     try {
-        const response = await api.put(`/produtcs/${id}`, {
+        const response = await api.put(`/products/${id}`, {
             name,
             price,
             description
@@ -47,6 +56,7 @@ async function updateProduct(id:number, name:string, price:number, description:s
 
 export const ProductsService = {
     getAllProducts,
+    getProductById,
     createProduct,
     deleteProduct,
     updateProduct,
